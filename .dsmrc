@@ -1,0 +1,7 @@
+{
+  "authToken": "ryGVNs_Wv",
+  "dsmHost": "cj.invisionapp.com",
+  "organization": "cjaffiliate",
+  "outputDir": ".dsm",
+  "storyPath": "src/components/**/*.stories.js"
+}

@@ -1,0 +1,49 @@
+{
+  "name": "visual-stack-clean",
+  "version": "1.0.0",
+  "description": "a clean example for prototyping DSM integration until I can fix visual stack",
+  "main": "index.js",
+  "scripts": {
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook",
+    "build": "webpack --progress --mode=production",
+    "watch": "webpack --progress --watch --mode=development",
+    "serve": "webpack-dev-server --open --mode=development",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dsm-storybook:publish": "dsm-storybook publish",
+    "dsm-storybook:preview": "dsm-storybook preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/n/a.git"
+  },
+  "author": "jnixon",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/n/a/issues"
+  },
+  "homepage": "https://github.com/n/a#readme",
+  "dependencies": {
+    "@invisionapp/dsm-storybook": "0.0.131",
+    "@storybook/addon-info": "^5.3.19",
+    "prop-types": "^15.7.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.11.0",
+    "@babel/preset-env": "^7.11.0",
+    "@babel/preset-react": "^7.10.4",
+    "@storybook/addon-actions": "^5.3.19",
+    "@storybook/addon-knobs": "^5.3.19",
+    "@storybook/addon-links": "^5.3.19",
+    "@storybook/addon-options": "^5.3.19",
+    "@storybook/addons": "^5.3.19",
+    "@storybook/react": "^5.3.19",
+    "babel-loader": "^8.1.0",
+    "express": "^4.17.1",
+    "react": "^16.13.1",
+    "request": "^2.88.2",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
+  }
+}
