@@ -2,7 +2,7 @@
 ---------------------------------------------------      DSM Log Start      ---------------------------------------------------
 Error message: No suitable component definition found. (detected in story "Submit Button" of Button) 
   
-Created Date: 3/15/2021, 4:01:57 PM
+Created Date: 3/15/2021, 5:53:19 PM
 Story file path: src/components/Button/Button.stories.js
 Component file path: Not found in "in-dsm"
 
@@ -144,7 +144,250 @@ storiesOf('Button', module)
     }
   })
   .add('Small Button', () => (
-    <TheirButton >small TheirButton</TheirButton>
+    <Button
+    small
+    onClick={action('clicked')}
+    type={select('typeOption', typeOptions, typeOptions.primary)}
+  >
+    {text('children', 'TEXT')}
+  </Button>
+  ),{
+    'in-dsm': {
+        id: '5f3485267543851a11f1473a'
+    }
+  })
+  .add('Submit Button', () => (
+    <SubmitButton onClick={action('clicked')}>Great</SubmitButton>
+  ),{
+    'in-dsm': {
+        id: '5f34872fe4c20f8567a36d7b'
+    }
+  });
+
+  
+
+// export default {
+//   title: 'Button',
+//   parameters: {
+//     component: Button,
+//     decorators: [withKnobs],
+//     'in-dsm': {
+//       id: '5f347e21752a5564c921767f',
+//       versionFilePath: '../versionFile.json'
+//     }
+//   }
+// };
+
+// export const Small = () => <Button type="solid-primary-pill" small>small button</Button>
+// export const Large = () => <Button type="primary" large>small button</Button>
+
+// export const simpleButton = () => (
+  // <Button
+  //   onClick={() => action('Button clicked')('Click')}
+  //   // small={boolean('small', true)}
+  //   type={select('typeOption', typeOptions, typeOptions.primary)}
+  // >
+  //   {text('children', 'TEXT')}
+  // </Button>
+// );
+
+// simpleButton.story = {
+//   parameters: {
+//     // "in-dsm": {id: "5f31ad48a3f8f4d3db9b9756", versionFilePath: '../versionFile.json'}
+//     // Story-Level 'in-dsm' configuration (Will apply only to the story that is being configured)
+//     // Story-Level configuration will override Module-Level 'in-dsm' configuration for the specific story
+//     // 'in-dsm': { id: '5d81da1f794992009993e356', versionFilePath: './versionFile.json' },
+//     // docs: { page: buttonDocs }
+//   }
+// };
+
+####  STORYBOOK CONFIG /Users/jnixon/cj-projects/prototyping_projects/visual-stack-clean/.storybook/*
+   
+
+###  FILE: /Users/jnixon/cj-projects/prototyping_projects/visual-stack-clean/.storybook/addons.js
+  
+// add the addons from main.js here as imports
+import '@storybook/addon-actions/register'
+import '@storybook/addon-links/register'
+import '@storybook/addon-knobs/register'
+import '@storybook/addon-info'
+
+import { registerDsm } from '@invisionapp/dsm-storybook/register';
+registerDsm(process.env.STORYBOOK_DSM);
+
+,
+###  FILE: /Users/jnixon/cj-projects/prototyping_projects/visual-stack-clean/.storybook/config.js
+  
+import { configure, addDecorator, addParameters } from '@storybook/react';
+import { initDsm } from '@invisionapp/dsm-storybook';
+
+// automatically import all files ending in *.stories.js
+const req = require.context('../src/components', true, /\.stories\.js$/);
+function loadStories() {
+  req.keys().forEach((filename) => req(filename));
+}
+
+// //Init Dsm
+initDsm({
+  addDecorator,
+  addParameters,
+  callback: () => configure(loadStories, module)
+});
+ 
+---------------------------------------------------      DSM Log End      -----------------------------------------------------
+
+---------------------------------------------------      DSM Log Start      ---------------------------------------------------
+Error message: No suitable component definition found. (detected in story "Small Button" of Button) 
+  
+Created Date: 3/15/2021, 5:53:19 PM
+Story file path: src/components/Button/Button.stories.js
+Component file path: Not found in "in-dsm"
+
+###  FILE: package.json
+  
+{
+  "pkg": {
+    "name": "visual-stack-clean",
+    "version": "1.0.0",
+    "description": "a clean example for prototyping DSM integration until I can fix visual stack",
+    "main": "index.js",
+    "scripts": {
+      "storybook": "start-storybook -p 6006",
+      "build-storybook": "build-storybook",
+      "build": "webpack --progress --mode=production",
+      "watch": "webpack --progress --watch --mode=development",
+      "serve": "webpack-dev-server --open --mode=development",
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "dsm-storybook:publish": "dsm-storybook publish",
+      "dsm-storybook:preview": "dsm-storybook preview"
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/n/a.git"
+    },
+    "author": {
+      "name": "jnixon"
+    },
+    "license": "ISC",
+    "bugs": {
+      "url": "https://github.com/n/a/issues"
+    },
+    "homepage": "https://github.com/n/a#readme",
+    "dependencies": {
+      "@invisionapp/dsm-storybook": "0.0.131",
+      "@storybook/addon-info": "^5.3.19",
+      "prop-types": "^15.7.2"
+    },
+    "devDependencies": {
+      "@babel/core": "^7.11.0",
+      "@babel/preset-env": "^7.11.0",
+      "@babel/preset-react": "^7.10.4",
+      "@storybook/addon-actions": "^5.3.19",
+      "@storybook/addon-knobs": "^5.3.19",
+      "@storybook/addon-links": "^5.3.19",
+      "@storybook/addon-options": "^5.3.19",
+      "@storybook/addons": "^5.3.19",
+      "@storybook/react": "^5.3.19",
+      "babel-loader": "^8.1.0",
+      "express": "^4.17.1",
+      "react": "^16.13.1",
+      "request": "^2.88.2",
+      "webpack": "^4.44.1",
+      "webpack-cli": "^3.3.12",
+      "webpack-dev-server": "^3.11.0"
+    },
+    "readme": "ERROR: No README data found!",
+    "_id": "visual-stack-clean@1.0.0"
+  },
+  "path": "/Users/jnixon/cj-projects/prototyping_projects/visual-stack-clean/package.json"
+}
+
+###  FILE: '.dsmrc'
+  
+{
+  "dsmHost": "cj.invisionapp.com",
+  "organization": "cjaffiliate",
+  "outputDir": ".dsm",
+  "storyPath": "src/components/**/*.stories.js"
+}
+
+###  Story metadata
+  
+{
+  "externalComponentId": "5f3485267543851a11f1473a",
+  "kind": "Button",
+  "name": "Small Button",
+  "dsmInfo": {
+    "id": "5f3485267543851a11f1473a"
+  },
+  "frameworkMetadata": {
+    "returnStatement": "<Button\n    small\n    onClick={action('clicked')}\n    type={select('typeOption', typeOptions, typeOptions.primary)}\n  >\n    {text('children', 'TEXT')}\n  </Button>"
+  }
+}
+
+###  Story source code
+  
+import React from 'react';
+import { storiesOf } from '@storybook/react';
+import { withActions, action } from '@storybook/addon-actions';
+import { withInfo } from '@storybook/addon-info';
+import { withKnobs, boolean, select, text } from '@storybook/addon-knobs';
+import { Button, SubmitButton } from './index.js';
+import { Button as TheirButton } from '@storybook/react/demo';
+
+
+const typeOptions = {
+  'primary': 'primary',
+  'success': 'success',
+  'info': 'info',
+  'default': 'default',
+  'warning': 'warning',
+  'danger': 'danger',
+  'solid-primary': 'solid-primary',
+  'solid-primary-raised': 'solid-primary-raised',
+  'solid-secondary': 'solid-secondary',
+  'outline-primary': 'outline-primary',
+  'outline-secondary': 'outline-secondary',
+  'outline-secondary-raised': 'outline-secondary-raised',
+  'rounded-solid': 'rounded-solid',
+  'rounded-outline': 'rounded-outline',
+  'icon': 'icon',
+  'text': 'text',
+  'text-link': 'text-link',
+  'inline-outline-secondary': 'inline-outline-secondary',
+  'solid-primary-pill': 'solid-primary-pill',
+  'solid-secondary-pill': 'solid-secondary-pill',
+  'solid-outline-raised-pill': 'solid-outline-raised-pill',
+ };
+
+storiesOf('Button', module)
+  .addDecorator(withInfo)
+  .addDecorator(withKnobs)
+  .addParameters({
+    info: {
+      inline: true
+    }
+  })
+  .add('Simple Button', () => (
+    <Button
+      onClick={action('clicked')}
+      type={select('typeOption', typeOptions, typeOptions.primary)}
+    >
+      {text('children', 'TEXT')}
+    </Button>
+  ),{
+    'in-dsm': {
+        id: '5f34851d4a308272466b4436'
+    }
+  })
+  .add('Small Button', () => (
+    <Button
+    small
+    onClick={action('clicked')}
+    type={select('typeOption', typeOptions, typeOptions.primary)}
+  >
+    {text('children', 'TEXT')}
+  </Button>
   ),{
     'in-dsm': {
         id: '5f3485267543851a11f1473a'
@@ -233,7 +476,7 @@ initDsm({
 ---------------------------------------------------      DSM Log Start      ---------------------------------------------------
 Error message: No suitable component definition found. (detected in story "Simple Button" of Button) 
   
-Created Date: 3/15/2021, 4:01:57 PM
+Created Date: 3/15/2021, 5:53:19 PM
 Story file path: src/components/Button/Button.stories.js
 Component file path: Not found in "in-dsm"
 
@@ -375,7 +618,13 @@ storiesOf('Button', module)
     }
   })
   .add('Small Button', () => (
-    <TheirButton >small TheirButton</TheirButton>
+    <Button
+    small
+    onClick={action('clicked')}
+    type={select('typeOption', typeOptions, typeOptions.primary)}
+  >
+    {text('children', 'TEXT')}
+  </Button>
   ),{
     'in-dsm': {
         id: '5f3485267543851a11f1473a'

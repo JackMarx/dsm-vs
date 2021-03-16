@@ -52,7 +52,13 @@ storiesOf('Button', module)
     }
   })
   .add('Small Button', () => (
-    <TheirButton >small TheirButton</TheirButton>
+    <Button
+      small
+      onClick={action('clicked')}
+      type={select('typeOption', typeOptions, typeOptions.primary)}
+    >
+      {text('children', 'TEXT')}
+    </Button>
   ),{
     'in-dsm': {
         id: '5f3485267543851a11f1473a'

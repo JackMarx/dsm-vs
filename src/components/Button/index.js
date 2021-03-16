@@ -10,9 +10,10 @@ const mkButton = buttonType => ({
     large,
     ...restProps
   }) => {
-    const smallOption = small && ' vs-sm-btn'
-    const largeOption = large && ' vs-lg-btn'
-    const classList = `vs-btn-d vs-${type}-btn ` + className + smallOption + largeOption
+    const smallOption = small ? ' vs-sm-btn' : "";
+    const largeOption = large ? ' vs-lg-btn' : "";
+    const classNameOption = className || "";
+    const classList = `vs-btn-d vs-${type}-btn ` + classNameOption + smallOption + largeOption
   
     return (
       <button {...restProps} type={buttonType} className={classList}>
