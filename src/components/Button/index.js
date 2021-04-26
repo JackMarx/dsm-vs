@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './Button.css';
 
-const mkButton = buttonType => ({
+export const mkButton = buttonType => ({
     children,
     className,
     type,
